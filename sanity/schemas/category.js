@@ -9,6 +9,17 @@ export default {
             title: 'Kategorinavn'
         },
         {
+            name: 'catagory_slug',
+            type: 'slug',
+            title: 'URL-tittle',
+            options: {
+                source: 'category_title',
+                slugify: input => input.toLowerCase()
+                    .replace((/\s+/g,/[^\w-]+/g), '-')
+                    .slice(0, 150)
+            }
+        },
+        {
             name: 'category_image',
             type: 'image',
             title: 'Bilde'
