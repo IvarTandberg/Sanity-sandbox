@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { fetchCategory } from "../../lib/sanity/CatagoryServices"
+
 
 export default function CatagoryPage() {
     const {category} = useParams()
@@ -20,9 +21,8 @@ export default function CatagoryPage() {
 
     return (
         <>
-        <h1>{catProds?.category_title}</h1>
-        {catProds?.products.map((p, i) => <p><Link to={`/${p.slug}`}>{p.
-        products_title} NOK: {p.price},-</Link></p>)}
+            <h1>{catProds?.category_title}</h1>
+            {catProds?.products.map((p, i) => <p key={i}><Link to={`/${p.slug}`}>{p.product_title} NOK: {p.price},-</Link></p>)}
         </>
     )
 }
